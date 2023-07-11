@@ -15,6 +15,28 @@ function getList() {
   });
 }
 
+// Exercise 1
+/* const paragraph = document.getElementById("error");
+const ul = document.getElementById("list"); */
+
+const errorP = document.querySelector("#error");
+const listUL = document.querySelector("list");
+
+getList().then((val) => {
+  console.log(val);
+  // success -- iterate using a forEach loop
+  for (let i = 0; i < val.length; i++){
+    const newLi = document.createElement("li");
+    newLi.textContent = val[i];
+    listUL.appendChild(newLi);
+  }
+}).catch((err) => {
+  console.log(err);
+  // failure
+  errorP.textcontent = err.message;
+})
+
+
 // TODO: Handle the resolved or rejected states of the promise
 
 // TODO: If the promise resolves with the list of hobbits
